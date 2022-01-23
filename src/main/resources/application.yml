@@ -1,0 +1,41 @@
+server:
+  port: ${PORT:9005}
+
+spring:
+  application:
+    name: payment-order-service
+  data:
+    mongodb:
+      uri: ${MONGODB_URL}
+  mail:
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+
+#      host: localhost
+#      port: 27017
+#      database: ecommerce
+
+eureka:
+  instance:
+    hostname: ${APPDOMAIN:localhost}
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER_URL:http://127.0.0.1:8761/eureka/}
+
+jwt:
+  secret: "asdfghjkikjuhygfrd"
+
+
+razorPay:
+  key: ${RAZORPAY_KEY}
+  secret: ${RAZORPAY_SECRET}
+
+Feign:
+  User_url: ${USER_SERVICE_URL:http://buyer-service/}
+  Product_url: ${PRODUCT_SRVICE_URL:http://inventory-service/}
+
+allowed:
+  origin: ${REACT_APP_URL:http://localhost:3000}
+
