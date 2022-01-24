@@ -13,10 +13,6 @@ spring:
     username: ${MAIL_USERNAME}
     password: ${MAIL_PASSWORD}
 
-#      host: localhost
-#      port: 27017
-#      database: ecommerce
-
 eureka:
   instance:
     hostname: ${APPDOMAIN:localhost}

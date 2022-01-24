@@ -1,7 +1,12 @@
 package com.ecommerce.paymentservice.model
 
+import java.time.LocalDateTime
+import javax.validation.constraints.Max
+
 data class Review(
+    var firstName:String?,
     var email:String,
-    var rating:Float,
-    var comment:String
-)
+    @field:Max(5)
+    var rating:Int,
+    var commentDate:String = LocalDateTime.now().toString(),
+    var comment:String?)
