@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import java.net.URI
 
-@FeignClient(name="ProductClient")
+@FeignClient(url = "http://inventory-service.eba-2kbtwhiu.us-east-1.elasticbeanstalk.com/",name="ProductClient")
 interface ProductClient {
 
     @GetMapping("product/getProduct/{productId}")
-    fun getProductDetail(baseUrl: URI, @PathVariable(name = "productId")productId:ObjectId):Product
+    fun getProductDetail(@PathVariable(name = "productId")productId:ObjectId):Product
 
 }

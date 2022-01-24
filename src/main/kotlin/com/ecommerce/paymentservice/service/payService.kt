@@ -55,7 +55,7 @@ class payService: IPayService{
 
     override fun createOrder(email: String, userAmount: UserAmount): String {
 
-        val products: MutableList<ObjectId> = userClient.getProductsFromCart(userUrl,secretCode,email)
+        val products: MutableList<ObjectId> = userClient.getProductsFromCart(secretCode,email)
         if(products.size > 0) {
             val client = RazorpayClient(key, secret)
             val txnid = UUID.randomUUID().toString().replace("-", "")
@@ -95,10 +95,10 @@ class payService: IPayService{
         order.paymentId = paymentId
         order.paymentStatus = status
         ordersRepository.save(order)
-        userClient.deleteProductsFromCart(userUrl,secretCode,email)
+        userClient.deleteProductsFromCart(secretCode,email)
         val product:MutableList<Product> = mutableListOf()
 //        order.products.forEach { println(productClient.getProductDetail(productUrl,it)) }
-        order.products.forEach { product.add(productClient.getProductDetail(productUrl,it)) }
+        order.products.forEach { product.add(productClient.getProductDetail(it)) }
         product.forEach {
             val mail = Mail()
             mail.mailFrom = "sumeshkuchya2@gmail.com"
